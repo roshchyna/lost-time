@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import moment from "moment";
 
@@ -10,7 +10,13 @@ const styles = {
     numbers: {
         fontWeight: 700,
         fontSize: 90
-    }
+    },
+    body: {
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+    },
 }
 
 const App = () => {
@@ -30,13 +36,15 @@ const App = () => {
 
 
     return (
-        <div className="App">
-            <div style={styles.label}>Дней выпало из жизни/идет война</div>
-            <div style={styles.numbers}> {Math.abs(daysWar)}</div>
-            <div style={styles.label}>До конца мобилизации</div>
-            <div style={styles.numbers}> {Math.abs(daysEndMartialLaw)}</div>
-            <div style={styles.label}>До конца военного положения</div>
-            <div style={styles.numbers}> {Math.abs(daysMobilizations)}</div>
+        <div style={styles.body} className="App">
+            <div>
+                <div style={styles.label}>Дней выпало из жизни/идет война</div>
+                <div style={styles.numbers}> {Math.abs(daysWar)}</div>
+                <div style={styles.label}>До конца мобилизации</div>
+                <div style={styles.numbers}> {Math.abs(daysEndMartialLaw)}</div>
+                <div style={styles.label}>До конца военного положения</div>
+                <div style={styles.numbers}> {Math.abs(daysMobilizations)}</div>
+            </div>
         </div>
     );
 }
