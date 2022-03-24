@@ -1,25 +1,44 @@
 import logo from './logo.svg';
 import './App.css';
+import moment from "moment";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const styles = {
+    label: {
+        fontWeight: 700,
+        fontSize: 30
+    },
+    numbers: {
+        fontWeight: 700,
+        fontSize: 90
+    }
+}
+
+const App = () => {
+
+    const givenWar = moment("2022-02-23", "YYYY-MM-DD");
+    const currentWar = moment().startOf('day');
+    const daysWar = moment.duration(givenWar.diff(currentWar)).asDays()
+
+
+    const startMartialLaw = moment("2022-03-23", "YYYY-MM-DD");
+    const endMartialLaw = moment("2022-04-25", "YYYY-MM-DD");
+    const daysEndMartialLaw= moment.duration(startMartialLaw.diff(endMartialLaw)).asDays().toFixed();
+
+    const startMobilization = moment("2022-03-23", "YYYY-MM-DD");
+    const endMobilization = moment("2022-05-24", "YYYY-MM-DD");
+    const daysMobilizations = moment.duration(startMobilization.diff(endMobilization)).asDays().toFixed();
+
+
+    return (
+        <div className="App">
+            <div style={styles.label}>Сколько дней выпало из жизни/идет война</div>
+            <div style={styles.numbers}> {Math.abs(daysWar)}</div>
+            <div style={styles.label}>Осталось до конца мобилизации</div>
+            <div style={styles.numbers}> {Math.abs(daysEndMartialLaw)}</div>
+            <div style={styles.label}>Осталось до конца мобилизации</div>
+            <div style={styles.numbers}> {Math.abs(daysMobilizations)}</div>
+        </div>
+    );
 }
 
 export default App;
