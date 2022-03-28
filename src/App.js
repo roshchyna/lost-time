@@ -23,15 +23,19 @@ const App = () => {
 
     const givenWar = moment("2022-02-24", "YYYY-MM-DD");
     const currentWar = moment().startOf('day');
-    const daysWar = moment.duration(givenWar.diff(currentWar)).asDays()
+    const daysWar = moment.duration(givenWar.diff(currentWar)).asDays().toFixed()
 
+    console.log({daysWar})
 
-    const startMartialLaw = moment("2022-03-24", "YYYY-MM-DD");
+    const now = moment()
+    const startMartialLaw = moment(now.format("YYYY-MM-DD"));
+
     const endMartialLaw = moment("2022-04-25", "YYYY-MM-DD");
     const daysEndMartialLaw= moment.duration(startMartialLaw.diff(endMartialLaw)).asDays().toFixed();
 
-    const startMobilization = moment("2022-03-24", "YYYY-MM-DD");
+    const startMobilization = moment(now.format("YYYY-MM-DD"));
     const endMobilization = moment("2022-05-24", "YYYY-MM-DD");
+
     const daysMobilizations = moment.duration(startMobilization.diff(endMobilization)).asDays().toFixed();
 
 
@@ -40,9 +44,9 @@ const App = () => {
             <div>
                 <div style={styles.label}>Дней выпало из жизни/идет война</div>
                 <div style={styles.numbers}> {Math.abs(daysWar)}</div>
-                <div style={styles.label}>До конца мобилизации</div>
-                <div style={styles.numbers}> {Math.abs(daysEndMartialLaw)}</div>
                 <div style={styles.label}>До конца военного положения</div>
+                <div style={styles.numbers}> {Math.abs(daysEndMartialLaw)}</div>
+                <div style={styles.label}>До конца мобилизации</div>
                 <div style={styles.numbers}> {Math.abs(daysMobilizations)}</div>
             </div>
         </div>
